@@ -2,9 +2,7 @@ module main
 
 abstract sig Pessoa { regiao_morada: one Regiao }
 sig Passageiro in Pessoa {}
-fact { all p:Passageiro | p in Sistema.passageiros_sistema }
 sig Motorista in Pessoa {}
-fact { all m:Motorista | m in Sistema.motoristas_sistema }
 
 sig Debito in Passageiro {}
 sig Credito in Motorista {}
@@ -28,20 +26,16 @@ sig Corrida {
     regiao_corrida: one Regiao,
     horario_corrida: one Horario
 }
-fact { all c:Corrida | c in Sistema.corridas_sistema }
+
 pred QuantidadePassageiro [c:Corrida] {
     #c.passageiros_corrida <= 3
     #c.passageiros_corrida > 0
 }
+
 pred MotoristaNaoPassageiro [c:Corrida] {
     c.motorista_corrida !in c.passageiros_corrida
 }
-fact { all c:Corrida | QuantidadePassageiro[c] && MotoristaNaoPassageiro[c] }
 
-one abstract sig Sistema {
-    passageiros_sistema: set Passageiro,
-    motoristas_sistema: set Motorista,
-    corridas_sistema: set Corrida
-}
+fact { all c:Corrida | QuantidadePassageiro[c] && MotoristaNaoPassageiro[c] }
 
 run {} for 5
