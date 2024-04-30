@@ -17,7 +17,10 @@ abstract sig Regiao {}
 one sig Centro, Leste, Oeste, Norte, Sul extends Regiao {}
 
 abstract sig Horario {}
-sig Ida, Saida extends Horario {}
+abstract sig Ida extends Horario {}
+abstract sig Saida extends Horario {}
+one sig Ida7, Ida9, Ida13, Ida15 extends Ida {}
+one sig Saida10, Saida12, Saida16, Saida18 extends Saida {}
 
 sig Corrida {
     motorista_corrida: one Motorista,
