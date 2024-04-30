@@ -16,10 +16,14 @@ sig Aluno, Professor, Servidor extends Pessoa {}
 abstract sig Regiao {}
 one sig Centro, Leste, Oeste, Norte, Sul extends Regiao {}
 
+abstract sig Horario {}
+sig Ida, Saida extends Horario {}
+
 sig Corrida {
     motorista_corrida: one Motorista,
     passageiros_corrida: set Passageiro,
-    regiao_corrida: one Regiao
+    regiao_corrida: one Regiao,
+    horario_corrida: one Horario
 }
 fact { all c:Corrida | c in Sistema.corridas_sistema }
 pred QuantidadePassageiro [c:Corrida] {
@@ -36,7 +40,5 @@ one abstract sig Sistema {
     motoristas_sistema: set Motorista,
     corridas_sistema: set Corrida
 }
-
-// TODO: horario 
 
 run {} for 5
