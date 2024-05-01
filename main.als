@@ -15,10 +15,7 @@ abstract sig Regiao {}
 one sig Centro, Leste, Oeste, Norte, Sul extends Regiao {}
 
 abstract sig Horario {}
-abstract sig Ida extends Horario {}
-abstract sig Saida extends Horario {}
-one sig Ida7, Ida9, Ida13, Ida15 extends Ida {}
-one sig Saida10, Saida12, Saida16, Saida18 extends Saida {}
+one sig Ida7, Ida9, Ida13, Ida15, Saida10, Saida12, Saida16, Saida18  extends Horario {}
 
 sig Corrida {
     motorista_corrida: one Motorista,
@@ -38,4 +35,4 @@ pred MotoristaNaoPassageiro [c:Corrida] {
 
 fact { all c:Corrida | QuantidadePassageiro[c] && MotoristaNaoPassageiro[c] }
 
-run {} for 5
+run {} for 5 but exactly 3 Corrida

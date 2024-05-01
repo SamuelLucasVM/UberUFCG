@@ -24,3 +24,9 @@ check CorridaTemPassageiro
 
 assert CorridaTemRegiao { all c:Corrida | some r:Regiao | r in c.regiao_corrida}
 check CorridaTemRegiao
+
+assert CorridaTemHorario { all c:Corrida | some h:Horario | h in c.horario_corrida }
+check CorridaTemHorario
+
+assert MotoristaNaoEhPassageiro { all c:Corrida | c.motorista_corrida !in c.passageiros_corrida }
+check MotoristaNaoEhPassageiro
