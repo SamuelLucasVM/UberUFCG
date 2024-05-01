@@ -27,3 +27,4 @@ ___
 - [Júlio Alcantara](https://github.com/alcantarajulio)
 - [Hebert Laurentino](https://github.com/laurentinoHebert)
 - [Rayanne Macêdo](https://github.com/raiaiaia)
+- [Ewerthon Danilo](https://github.com/eedanilo)
